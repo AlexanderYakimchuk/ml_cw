@@ -17,7 +17,7 @@ x_train, y_train = train_data[:, :-1], train_data[:, -1]
 x_train = np.stack([np.ones_like(x_train[:, 0]), *x_train.T], axis=1)
 x_test, y_test = test_data[:, :-1], test_data[:, -1]
 x_test = np.stack([np.ones_like(x_test[:, 0]), *x_test.T], axis=1)
-power = 2
+power = 4
 
 x_train1 = get_features(x_train, power)
 x_train1 = normalize(x_train1)
@@ -30,15 +30,15 @@ x_test1 = x_test1 @ v
 
 
 if __name__ == "__main__":
-    # base_model = LogisticRegression()
-    # model = bagging.BaggingClasifier(base_model=base_model, sample_size=70, iters=150)
-    # model.fit(x_train1, y_train)
-    # y = model.predict(x_train1)
-    # train_accuracy = accuracy(y_train, y) * 100
-    # print(f"Train accuracy: {train_accuracy}")
-    # y = model.predict(x_test1)
-    # test_accuracy = accuracy(y_test, y) * 100
-    # print(f"Test accuracy: {test_accuracy}")
+    base_model = LogisticRegression()
+    model = bagging.BaggingClasifier(base_model=base_model, sample_size=70, iters=150)
+    model.fit(x_train1, y_train)
+    y = model.predict(x_train1)
+    train_accuracy = accuracy(y_train, y) * 100
+    print(f"Train accuracy: {train_accuracy}")
+    y = model.predict(x_test1)
+    test_accuracy = accuracy(y_test, y) * 100
+    print(f"Test accuracy: {test_accuracy}")
 
     model = LogisticRegression()
     model.fit(x_train1, y_train)
