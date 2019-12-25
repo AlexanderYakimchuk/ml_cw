@@ -42,7 +42,7 @@ def normalize(d):
 
 
 class LogisticRegression:
-    def __init__(self, learning_rate=3e-1, iters=10000):
+    def __init__(self, learning_rate=3e-2, iters=10000):
         self.learning_rate = learning_rate
         self.iters = iters
         self.theta = None
